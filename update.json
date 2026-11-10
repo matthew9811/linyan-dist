@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "package": "com.matth.linyan",
+  "version": "0.1.2",
+  "versionCode": 3,
+  "tag": "v0.1.2",
+  "publishedAt": "2026-11-10T10:12:55.796Z",
+  "changelog": "见 https://github.com/matthew9811/linyan/releases/tag/v0.1.2",
+  "apkUrl": "https://github.com/matthew9811/linyan-dist/releases/download/v0.1.2/linyan-v0.1.2.apk",
+  "apkFilename": "linyan-v0.1.2.apk",
+  "apkSize": 40640586,
+  "apkSha256": "17ba08b9dacc52064af6d5debd8ae9299ab480025398b410de4c02e77372a01a",
+  "updateJsonUrl": "https://raw.githubusercontent.com/matthew9811/linyan-dist/main/update.json",
+  "runtimeVersion": null,
+  "otaManifestUrl": null
+}
