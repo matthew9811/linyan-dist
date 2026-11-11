@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#F4EFE6">
+<meta name="description" content="linyan — 临焰排盘工具。第一件作品：CBD 马赛塔罗排盘。一页关于院落、色与决策的非商业学习笔记。">
+<title>linyan · 临焰排盘工具 · 一页作品说明</title>
+<style>
+:root{
+  --paper:#F4EFE6; --wall:#EAE3D7; --wood:#6E5340; --ink:#332F2B;
+  --ink-soft:#7A746C; --tile:#7C8A87; --seal:#9E4B3C; --ochre:#B99B72;
+  --han:"Songti SC","STSong","Noto Serif CJK SC","Source Han Serif SC","SimSun",serif;
+  --latin:"EB Garamond","Georgia","Times New Roman",serif;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; background:var(--paper); color:var(--ink);
+  font-family:var(--han); font-size:14px; line-height:22px;
+}
+.wrap{max-width:860px; margin:0 auto; padding:0 28px 96px}
+a{color:var(--wood); text-decoration:underline; text-underline-offset:3px; text-decoration-thickness:1px}
+a:hover{color:var(--seal)}
+
+/* 门额 */
+.gate{margin:64px 0 0; padding:40px 24px 34px; border:1px solid var(--ochre); border-radius:12px; text-align:center; background:var(--wall)}
+.gate .mark{display:inline-block; width:7px; height:7px; border-radius:50%; background:var(--seal); vertical-align:middle; margin-right:10px}
+.gate h1{font-size:30px; line-height:42px; font-weight:500; margin:0; color:var(--wood); letter-spacing:.14em}
+.gate .latin{font-family:var(--latin); font-size:12px; line-height:19px; letter-spacing:.26em; color:var(--ink-soft); margin:8px 0 0; text-transform:uppercase}
+.gate .sub{font-size:16px; line-height:26px; color:var(--ink); margin:22px 0 0}
+.gate .sub em{font-style:normal; color:var(--seal)}
+.gate .meta{font-size:12px; line-height:19px; color:var(--ink-soft); margin:18px 0 0}
+
+/* 院（章节） */
+.court{margin:56px 0 0; padding-top:22px; border-top:1px solid var(--ochre)}
+.court-head{display:flex; align-items:baseline; gap:14px; margin-bottom:20px}
+.court-no{font-family:var(--latin); font-size:12px; line-height:19px; color:var(--tile); letter-spacing:.12em; flex:none}
+.court-head h2{font-size:22px; line-height:33px; font-weight:500; color:var(--wood); margin:0}
+.court-head .en{font-family:var(--latin); font-size:12px; line-height:19px; color:var(--ink-soft); letter-spacing:.1em; margin-left:auto}
+p{margin:0 0 14px}
+.lead{font-size:16px; line-height:26px}
+.muted{color:var(--ink-soft); font-size:12px; line-height:19px}
+
+/* 卡片 */
+.card{background:var(--wall); border:1px solid var(--ochre); border-radius:12px; padding:22px 24px}
+.card.roman{border-radius:3px}
+.card h3{font-size:16px; line-height:26px; font-weight:500; color:var(--wood); margin:0 0 10px}
+.card p:last-child{margin-bottom:0}
+.grid2{display:grid; grid-template-columns:1fr 1fr; gap:18px}
+.grid3{display:grid; grid-template-columns:1fr 1fr 1fr; gap:18px}
+
+/* 这不是什么 */
+.not{list-style:none; padding:0; margin:0; display:grid; grid-template-columns:1fr 1fr; gap:10px 24px}
+.not li{font-size:14px; line-height:22px; padding-left:18px; position:relative}
+.not li::before{content:""; position:absolute; left:0; top:9px; width:5px; height:5px; border:1px solid var(--seal); border-radius:50%}
+
+/* 色卡 */
+.swatches{display:grid; grid-template-columns:repeat(4,1fr); gap:12px}
+.sw{border:1px solid var(--ochre); border-radius:3px; overflow:hidden; background:var(--wall)}
+.sw .chip{height:52px; border-bottom:1px solid var(--ochre)}
+.sw .txt{padding:8px 10px 10px}
+.sw .nm{font-size:12px; line-height:19px; color:var(--ink)}
+.sw .hx{font-family:var(--latin); font-size:12px; line-height:19px; color:var(--ink-soft); letter-spacing:.04em}
+
+/* 字阶 */
+.scale{margin-top:22px; border-top:1px solid var(--ochre); padding-top:16px}
+.scale-row{display:flex; align-items:baseline; gap:16px; padding:7px 0; border-bottom:1px solid rgba(185,155,114,.4)}
+.scale-row .lb{font-family:var(--latin); font-size:12px; color:var(--ink-soft); width:86px; flex:none}
+.scale-row .sp{color:var(--wood)}
+
+/* 结构示意 */
+.sim-row{display:flex; gap:26px; align-items:flex-start; flex-wrap:wrap}
+.phone{width:168px; flex:none; border:1px solid var(--wood); border-radius:12px; padding:9px; background:var(--wall)}
+.phone .bar{height:8px; border:1px solid var(--ochre); border-radius:3px; margin-bottom:9px}
+.phone .title{height:14px; width:62%; border-left:3px solid var(--seal); padding-left:6px; font-size:12px; line-height:14px; color:var(--wood); margin-bottom:10px}
+.phone .slot{height:44px; border:1px solid var(--ochre); border-radius:3px; margin-bottom:7px; background:var(--paper)}
+.phone .slot.alt{background:var(--tile); opacity:.22}
+.phone .line{height:5px; background:var(--ochre); opacity:.5; margin:6px 0; border-radius:1px}
+.phone .line.short{width:58%}
+.sim-note{flex:1; min-width:220px}
+
+/* 决策 */
+.decisions{list-style:none; padding:0; margin:0}
+.decisions li{display:flex; gap:14px; padding:12px 0; border-bottom:1px solid rgba(185,155,114,.4)}
+.decisions li:last-child{border-bottom:0}
+.decisions .tag{font-family:var(--latin); font-size:12px; line-height:19px; color:var(--seal); flex:none; width:38px; padding-top:2px}
+.decisions .body{font-size:14px; line-height:22px}
+.decisions .body b{font-weight:500; color:var(--wood)}
+
+/* 工程键值对 */
+dl.kv{margin:0; display:grid; grid-template-columns:120px 1fr; gap:9px 18px}
+dl.kv dt{font-size:12px; line-height:19px; color:var(--ink-soft)}
+dl.kv dd{margin:0; font-size:14px; line-height:22px}
+code{font-family:var(--latin); font-size:13px; color:var(--wood); background:rgba(185,155,114,.16); padding:1px 5px; border-radius:3px}
+
+/* 下载折叠 */
+details{border:1px solid var(--ochre); border-radius:12px; background:var(--wall); padding:0 22px}
+summary{cursor:pointer; padding:16px 0; font-size:16px; line-height:26px; color:var(--wood); list-style:none}
+summary::-webkit-details-marker{display:none}
+summary::before{content:"+"; font-family:var(--latin); display:inline-block; width:22px; color:var(--seal)}
+details[open] summary::before{content:"−"}
+details[open] summary{border-bottom:1px solid var(--ochre)}
+.dl-body{padding:18px 0 6px}
+.dl-body p{font-size:14px; line-height:22px}
+.dl-body .ver{font-family:var(--latin); color:var(--ink-soft); font-size:12px}
+
+/* 署名 */
+.credit{border-left:3px solid var(--seal); padding:4px 0 4px 20px}
+.credit p{font-size:14px; line-height:22px}
+.credit .official{font-family:var(--latin); font-size:14px; color:var(--wood)}
+.credit .fine{font-size:12px; line-height:19px; color:var(--ink-soft)}
+
+/* 页脚 */
+footer{margin-top:64px; padding-top:18px; border-top:1px solid var(--ochre); font-size:12px; line-height:19px; color:var(--ink-soft); display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap}
+
+@media (max-width:680px){
+  .wrap{padding:0 18px 64px}
+  .gate{margin-top:32px; padding:30px 16px 26px}
+  .gate h1{font-size:26px; line-height:36px}
+  .court-head .en{display:none}
+  .grid2,.grid3,.not,.swatches{grid-template-columns:1fr 1fr}
+  .swatches{grid-template-columns:repeat(2,1fr)}
+  dl.kv{grid-template-columns:1fr; gap:2px 0}
+  dl.kv dd{margin-bottom:8px}
+}
+@media (max-width:420px){
+  .grid2,.grid3,.not{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="gate">
+    <h1><span class="mark"></span>linyan</h1>
+    <p class="latin">a tarot layout tool · one page of notes</p>
+    <p class="sub">临焰排盘工具。第一件作品：<em>CBD 马赛塔罗排盘</em>。</p>
+    <p class="meta">Android · 纯离线 · 非商业 · 学习与展示用途 · 2026</p>
+  </header>
+
+  <section class="court">
+    <div class="court-head"><span class="court-no">01</span><h2>这不是什么</h2><span class="en">what it is not</span></div>
+    <ul class="not">
+      <li>不是应用商店上架的应用，不做公开分发</li>
+      <li>不是商业产品，不售卖、无广告、无内购</li>
+      <li>不提供占卜、算命或人生预测服务</li>
+      <li>纯离线：无账号、无云同步、不收集数据</li>
+    </ul>
+    <p class="muted" style="margin-top:16px">它首先是一份关于「怎么把一个东西想清楚」的记录。塔罗只是第一个 feature，不是项目边界。</p>
+  </section>
+
+  <section class="court">
+    <div class="court-head"><span class="court-no">02</span><h2>两进院</h2><span class="en">two courts</span></div>
+    <div class="grid2">
+      <div class="card">
+        <h3>主院 · 庭</h3>
+        <p>唐宋。开张、进深、轴线作骨架，素净、法度、留白作表皮。挂首页、设置与自检。</p>
+        <p class="muted">暖材质约 55%，留白 30%，青灰压舱 15%。</p>
+      </div>
+      <div class="card roman">
+        <h3>马赛院</h3>
+        <p>罗马。与唐宋并列，不是串味。赤陶框、顶光井、硬边圆角，挂抽牌与牌意。</p>
+        <p class="muted">「大唐就是西方人眼里的罗马」——两院同源，各立门户。</p>
+      </div>
+    </div>
+    <p style="margin-top:18px">院的边界按<strong style="font-weight:500;color:var(--wood)">「一件事办完」</strong>划，不按路由划。所以抽牌与牌意同在一院，记注壁是屏内一隅而非独立一屏；只有跨院才「过门」，转场也才换动画。</p>
+    <p class="muted">风格可替换的部分被收进两层白名单：院层 4 项、房间层 3 项，其余锁在 <code>tokens.ts</code>，越界由 TypeScript 编译期拦住。这是为了「想调随时能调」，而不是又多一层配置。</p>
+  </section>
+
+  <section class="court">
+    <div class="court-head"><span class="court-no">03</span><h2>设计语言</h2><span class="en">the vocabulary</span></div>
+    <p class="lead">暖在色相，冷在调性。朱印是全院唯一高饱和，只落在极小面积。</p>
+    <div class="swatches">
+      <div class="sw"><div class="chip" style="background:#F4EFE6"></div><div class="txt"><div class="nm">宣纸 · paper</div><div class="hx">#F4EFE6</div></div></div>
+      <div class="sw"><div class="chip" style="background:#EAE3D7"></div><div class="txt"><div class="nm">素墙 · wall</div><div class="hx">#EAE3D7</div></div></div>
+      <div class="sw"><div class="chip" style="background:#6E5340"></div><div class="txt"><div class="nm">栗木 · wood</div><div class="hx">#6E5340</div></div></div>
+      <div class="sw"><div class="chip" style="background:#332F2B"></div><div class="txt"><div class="nm">墨 · ink</div><div class="hx">#332F2B</div></div></div>
+      <div class="sw"><div class="chip" style="background:#7A746C"></div><div class="txt"><div class="nm">淡墨 · inkSoft</div><div class="hx">#7A746C</div></div></div>
+      <div class="sw"><div class="chip" style="background:#7C8A87"></div><div class="txt"><div class="nm">青瓦 · tile</div><div class="hx">#7C8A87</div></div></div>
+      <div class="sw"><div class="chip" style="background:#9E4B3C"></div><div class="txt"><div class="nm">朱印 · seal</div><div class="hx">#9E4B3C</div></div></div>
+      <div class="sw"><div class="chip" style="background:#B99B72"></div><div class="txt"><div class="nm">赭石 · ochre</div><div class="hx">#B99B72</div></div></div>
+    </div>
+    <div class="scale">
+      <div class="scale-row"><span class="lb">30 / 42</span><span class="sp" style="font-size:30px;line-height:42px">院</span><span class="muted">院名与牌名</span></div>
+      <div class="scale-row"><span class="lb">22 / 33</span><span class="sp" style="font-size:22px;line-height:33px">院</span><span class="muted">章节标题</span></div>
+      <div class="scale-row"><span class="lb">16 / 26</span><span class="sp" style="font-size:16px;line-height:26px">院</span><span class="muted">导语</span></div>
+      <div class="scale-row"><span class="lb">14 / 22</span><span class="sp" style="font-size:14px;line-height:22px">院</span><span class="muted">正文</span></div>
+      <div class="scale-row"><span class="lb">12 / 19</span><span class="sp" style="font-size:12px;line-height:19px">院</span><span class="muted">注释与免责</span></div>
+    </div>
+    <p class="muted" style="margin-top:16px">五档字阶、两档圆角（12 与 3）、1px 线框，不用阴影——唐宋木构是线的艺术，靠底色差分层，不靠投影。本页配色与字阶全部取自 <code>app/src/theme/tokens.ts</code>，未另造一套。</p>
+  </section>
+
+  <section class="court">
+    <div class="court-head"><span class="court-no">04</span><h2>界面结构示意</h2><span class="en">a sketch, not a screenshot</span></div>
+    <div class="sim-row">
+      <div class="phone" aria-hidden="true">
+        <div class="bar"></div>
+        <div class="title">一进院</div>
+        <div class="slot"></div>
+        <div class="slot alt"></div>
+        <div class="line"></div>
+        <div class="line short"></div>
+        <div class="line"></div>
+      </div>
+      <div class="sim-note">
+        <p>这只是一个抽象框：色块、线框与留白的关系，用来说明「院」怎么分层。</p>
+        <p class="muted">非真机截图，不含任何官方牌图，也不含牌意文本。真实界面以本机安装的版本为准。</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="court">
+    <div class="court-head"><span class="court-no">05</span><h2>事实层与诠释层</h2><span class="en">facts and reading</span></div>
+    <div class="grid2">
+      <div class="card">
+        <h3>事实层 · 只追加</h3>
+        <p>抽牌事件只记 <code>position_index</code> / <code>card_id</code> / <code>orientation</code>。发生过的事不改写、不倒填、不迁移。</p>
+      </div>
+      <div class="card">
+        <h3>诠释层 · 可编辑</h3>
+        <p>笔记随时可改。回放不是新建一个只读页面，就是抽牌屏的只读态：牌背禁用、过程时间线可展开。</p>
+      </div>
+    </div>
+    <p style="margin-top:18px">一个容易被做错的地方：牌背选牌<strong style="font-weight:500;color:var(--wood)">只是感官层的差异</strong>，是手动摸扑克牌的模拟。<code>deckIndex</code> 不承载语义，不能暗示「抽第 7 张与第 79 张有区别」——它只用来标记这张已被抽过。已抽格子只做不可点的灰色标记，不回看单步。</p>
+  </section>
+
+  <section class="court">
+    <div class="court-head"><span class="court-no">06</span><h2>工程</h2><span class="en">how it is built</span></div>
+    <dl class="kv">
+      <dt>技术栈</dt><dd>Expo SDK 58 · React Native 0.88 · TypeScript · 本地 SQLite（expo-sqlite）</dd>
+      <dt>数据</dt><dd>79 张牌图、157 行英文官方牌意、157 行中文参考译文、5 套牌阵，全部随包本地存放</dd>
+      <dt>网络</dt><dd>牌图与牌意零联网；唯一联网动作是启动时检查更新清单，无清单时静默降级、不阻塞启动</dd>
+      <dt>出包</dt><dd>推 <code>v*</code> tag 触发 CI → 正式签名 APK → 公开 Release + <code>update.json</code></dd>
+      <dt>自更新</dt><dd>清单校验 → 版本比对 → 下载 → SHA-256 双闸门校验 → 安装 Intent</dd>
+      <dt>真机</dt><dd>OPPO PKB110 / Android 17，USB 调试核验签名、版本与 App 内覆盖安装</dd>
+    </dl>
+  </section>
+
+  <section class="court">
+    <div class="court-head"><span class="court-no">07</span><h2>决策摘录</h2><span class="en">from D01–D40</span></div>
+    <ul class="decisions">
+      <li><span class="tag">D25</span><span class="body"><b>官方文件名编号即语义顺序。</b> <code>a22</code>（LE MAT，官方无编号）落到 <code>major:0</code>；LWB 里说的「initial ordering different」指实体牌盒的物理排列，不是文件名。</span></li>
+      <li><span class="tag">D27</span><span class="body"><b>译文六条口径。</b> 逐句对应、不增删、不掺通用塔罗牌意与吉凶判断，每行附英文快照，以官方原文为准。</span></li>
+      <li><span class="tag">D29</span><span class="body"><b>工程根选 <code>app/</code>。</b> Expo SDK 58 模板默认用 <code>src/app</code> 路由，自动避开 <code>app/app/</code> 重名，不必用官方「强烈不建议」的自定义 root。</span></li>
+      <li><span class="tag">D36</span><span class="body"><b>自更新的双闸门。</b> 先比 <code>apkSize</code>，再比 <code>apkSha256</code>；清单字段不合法直接拒绝安装，不做「差不多就装上」。</span></li>
+      <li><span class="tag">D40</span><span class="body"><b>院按一件事办完划。</b> 配置化是为了随时能调，不是为了多一层抽象；八色、五档字阶、两档圆角收进唯一出处，越界编译期拦住。</span></li>
+    </ul>
+    <p class="muted" style="margin-top:14px">完整决策流水与变更记录留在项目内的唯一真相源 <code>docs/00-决策清单.md</code>，此处只摘录五条。</p>
+  </section>
+
+  <section class="court">
+    <div class="court-head"><span class="court-no">08</span><h2>装到自己手机上</h2><span class="en">optional</span></div>
+    <details>
+      <summary>下载与说明</summary>
+      <div class="dl-body">
+        <p>这是个人作品，不在任何应用商店上架。若你确实想装，需自行允许「安装未知来源应用」，并自行核对 APK 签名与 SHA-256。</p>
+        <p class="ver">当前在版 v0.1.3 · versionCode 4 · 2026-11-11 · 约 39 MB · arm64</p>
+        <p><a href="https://github.com/matthew9811/linyan-dist/releases">前往 GitHub Releases 查看版本与安装包</a> ｜ <a href="https://raw.githubusercontent.com/matthew9811/linyan-dist/main/update.json">update.json（版本契约）</a></p>
+        <p class="muted">版本以 Releases 页面为准，本页不写死直链，避免旧版本链接失效。</p>
+      </div>
+    </details>
+  </section>
+
+  <section class="court">
+    <div class="court-head"><span class="court-no">09</span><h2>署名与授权</h2><span class="en">credit and license</span></div>
+    <div class="credit">
+      <p class="official">CBD Tarot de Marseille by Dr. Yoav Ben-Dov — <a href="https://cbdtarot.com/">www.cbdtarot.com</a></p>
+      <p>牌图与小册子文本取自官网官方原文件，依官方「非商业免费使用、无需特别许可或付费，只要不售卖并给出适当署名与本站链接」条款使用；小册子文本另受 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/">CC BY-NC-SA 3.0</a>（署名 / 相同方式共享 / 非商业）约束。</p>
+      <p>本页与本项目均为<strong style="font-weight:500;color:var(--wood)">非商业的个人学习与展示用途</strong>：不售卖、不提供占卜服务、不通过应用商店分发。中文牌意是从英文原文译出的参考译文，不冒充官方译本。</p>
+      <p class="fine">本页不含官方牌图与牌意原文；上方界面图形为纯 CSS 结构示意。牌图使用官方 293×567 原文件，随 App 本地存放，不二次压缩或重绘。</p>
+    </div>
+  </section>
+
+  <footer>
+    <span>linyan · 临焰排盘工具 · 一页非商业作品说明</span>
+    <span>无统计 · 无 Cookie · 无第三方资源 · 单文件静态页</span>
+  </footer>
+
+</div>
+</body>
+</html>
