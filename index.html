@@ -51,10 +51,6 @@ p{margin:0 0 14px}
 .grid2{display:grid; grid-template-columns:1fr 1fr; gap:18px}
 .grid3{display:grid; grid-template-columns:1fr 1fr 1fr; gap:18px}
 
-/* 这不是什么 */
-.not{list-style:none; padding:0; margin:0; display:grid; grid-template-columns:1fr 1fr; gap:10px 24px}
-.not li{font-size:14px; line-height:22px; padding-left:18px; position:relative}
-.not li::before{content:""; position:absolute; left:0; top:9px; width:5px; height:5px; border:1px solid var(--seal); border-radius:50%}
 
 /* 色卡 */
 .swatches{display:grid; grid-template-columns:repeat(4,1fr); gap:12px}
@@ -114,7 +110,6 @@ details[open] summary{border-bottom:1px solid var(--ochre)}
 .credit{border-left:3px solid var(--seal); padding:4px 0 4px 20px}
 .credit p{font-size:14px; line-height:22px}
 .credit .official{font-family:var(--latin); font-size:14px; color:var(--wood)}
-.credit .fine{font-size:12px; line-height:19px; color:var(--ink-soft)}
 
 /* 一点心意 */
 .tip{display:flex; flex-wrap:wrap; gap:24px; align-items:flex-start; border:1px solid var(--ochre); border-radius:12px; background:var(--wall); padding:22px 24px}
@@ -125,6 +120,13 @@ details[open] summary{border-bottom:1px solid var(--ochre)}
 .qr-paper{background:var(--paper); border:1px solid var(--ochre); border-radius:3px; padding:10px}
 .qr-paper img{display:block; width:168px; height:auto; border-radius:2px}
 .tip-qr p{margin:8px 0 0}
+.tip-terms{margin-top:12px}
+.tip-terms summary{padding:0; font-size:12px; line-height:19px; color:var(--ink-soft); cursor:pointer; list-style:none}
+.tip-terms summary::-webkit-details-marker{display:none}
+.tip-terms summary::before{content:"＋ "; width:auto; color:var(--seal)}
+.tip-terms[open] summary::before{content:"－ "}
+.tip-terms[open] summary{border-bottom:0}
+.tip-terms p{margin:8px 0 0}
 
 /* 页脚 */
 footer{margin-top:64px; padding-top:18px; border-top:1px solid var(--ochre); font-size:12px; line-height:19px; color:var(--ink-soft); display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap}
@@ -134,13 +136,13 @@ footer{margin-top:64px; padding-top:18px; border-top:1px solid var(--ochre); fon
   .gate{margin-top:32px; padding:30px 16px 26px}
   .gate h1{font-size:26px; line-height:36px}
   .court-head .en{display:none}
-  .grid2,.grid3,.not,.swatches{grid-template-columns:1fr 1fr}
+  .grid2,.grid3,.swatches{grid-template-columns:1fr 1fr}
   .swatches{grid-template-columns:repeat(2,1fr)}
   dl.kv{grid-template-columns:1fr; gap:2px 0}
   dl.kv dd{margin-bottom:8px}
 }
 @media (max-width:420px){
-  .grid2,.grid3,.not{grid-template-columns:1fr}
+  .grid2,.grid3{grid-template-columns:1fr}
 }
 </style>
 </head>
@@ -151,18 +153,14 @@ footer{margin-top:64px; padding-top:18px; border-top:1px solid var(--ochre); fon
     <h1><span class="mark"></span>linyan</h1>
     <p class="latin">a tarot layout tool · one page of notes</p>
     <p class="sub">临焰排盘工具。第一件作品：<em>CBD 马赛塔罗排盘</em>。</p>
-    <p class="meta">Android · 纯离线 · 非商业 · 学习与展示用途 · 2026</p>
+    <p class="meta">Android · 纯离线 · 做给朋友用 · 2026</p>
   </header>
 
   <section class="court">
-    <div class="court-head"><span class="court-no">01</span><h2>这不是什么</h2><span class="en">what it is not</span></div>
-    <ul class="not">
-      <li>不是应用商店上架的应用，不做公开分发</li>
-      <li>不是商业产品，不售卖、无广告、无内购</li>
-      <li>不提供占卜、算命或人生预测服务</li>
-      <li>纯离线：无账号、无云同步、不收集数据</li>
-    </ul>
-    <p class="muted" style="margin-top:16px">它首先是一份关于「怎么把一个东西想清楚」的记录。塔罗只是第一个 feature，不是项目边界。</p>
+    <div class="court-head"><span class="court-no">01</span><h2>这是什么</h2><span class="en">what it is</span></div>
+    <p class="lead">一款本地运行的马赛塔罗排盘与笔记工具。</p>
+    <p>把 CBD 马赛塔罗的 79 张牌、157 行官方牌意与中文参考译文装进手机：随时排牌、随时记注，抽过的牌留痕，想法可以反复改。纯离线、无账号、无云同步，牌图和文字都随包本地存放。</p>
+    <p>它也是一份关于「怎么把一个东西想清楚」的记录——从牌背抽牌的感官层定性，到两进院的设计语言，每一处取舍都留着决策流水。塔罗是第一个 feature，不是项目边界。</p>
   </section>
 
   <section class="court">
@@ -281,35 +279,37 @@ footer{margin-top:64px; padding-top:18px; border-top:1px solid var(--ochre); fon
   </section>
 
   <section class="court">
-    <div class="court-head"><span class="court-no">09</span><h2>署名与授权</h2><span class="en">credit and license</span></div>
+    <div class="court-head"><span class="court-no">09</span><h2>素材与致谢</h2><span class="en">credits</span></div>
     <div class="credit">
       <p class="official">CBD Tarot de Marseille by Dr. Yoav Ben-Dov — <a href="https://cbdtarot.com/">www.cbdtarot.com</a></p>
-      <p>牌图与小册子文本取自官网官方原文件，依官方「非商业免费使用、无需特别许可或付费，只要不售卖并给出适当署名与本站链接」条款使用；小册子文本另受 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/">CC BY-NC-SA 3.0</a>（署名 / 相同方式共享 / 非商业）约束。</p>
-      <p>本页与本项目均为<strong style="font-weight:500;color:var(--wood)">非商业的个人学习与展示用途</strong>：不售卖、不提供占卜服务、不通过应用商店分发。中文牌意是从英文原文译出的参考译文，不冒充官方译本。</p>
-      <p class="fine">本页不含官方牌图与牌意原文；上方界面图形为纯 CSS 结构示意。牌图使用官方 293×567 原文件，随 App 本地存放，不二次压缩或重绘。</p>
+      <p>牌图与官方小册子文本取自官网下载页，依官方非商业免费使用条款（署名 · 回链 · 不售卖）使用；小册子文本另受 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/">CC BY-NC-SA 3.0</a> 约束。牌图为官方 293×567 原文件，随 App 本地存放，未压缩、转码或重绘。</p>
+      <p>中文牌意是从英文原文逐句译出的参考译文，不冒充官方译本；本页不展示官方牌图与牌意原文，上方界面图形为纯 CSS 结构示意。</p>
     </div>
   </section>
 
   <section class="court">
-    <div class="court-head"><span class="court-no">10</span><h2>一点心意</h2><span class="en">entirely optional</span></div>
+    <div class="court-head"><span class="court-no">10</span><h2>一点心意</h2><span class="en">say thanks</span></div>
     <div class="tip">
       <div class="tip-note">
-        <p>这一页与 linyan 本身都是免费的：不售卖、无广告、无内购。赠与不带来任何功能、内容或服务上的差别，不赠与也完全不影响浏览、下载与使用。</p>
-        <p>下面的收款码只面向认识我的朋友，属<strong>个人自愿赠与</strong>，与本项目及上一节所述 CBD 牌图、牌意资源无关；它不是购买、订阅或解锁，也不构成本项目的对价。本项目仍按原有非商业条款使用官方资源。</p>
-        <p class="muted">收款码为作者个人的微信支付经营码，由本人持有。</p>
+        <p class="lead">觉得好用，就请我喝杯东西吧。</p>
+        <p>这个工具本来就免费，赞赏纯属随喜，跟功能、内容都没关系；不赏也照样随便用、随便装。</p>
+        <details class="tip-terms">
+          <summary>授权与收款说明</summary>
+          <p class="muted">收款码为作者个人的微信支付经营码，由本人持有。赠与属个人自愿，与本项目及第 09 节所述 CBD 牌图、牌意资源无关，不是购买、订阅或解锁，也不构成对价；项目仍按原有非商业条款使用官方资源，不售卖、无广告、无内购。</p>
+        </details>
       </div>
       <div class="tip-qr">
         <div class="qr-paper">
           <img src="assets/tip-qr.jpg" alt="微信支付收款码" width="168">
         </div>
-        <p class="muted">微信支付 · 扫码纯属自愿</p>
+        <p class="muted">微信支付 · 随喜</p>
       </div>
     </div>
   </section>
 
   <footer>
-    <span>linyan · 临焰排盘工具 · 一页非商业作品说明</span>
-    <span>无统计 · 无 Cookie · 无第三方资源 · 静态页</span>
+    <span>linyan · 临焰排盘工具 · 做给朋友的一页说明</span>
+    <span>不上架商店 · 不售卖 · 无广告内购 · 无账号与云同步 · 无统计 Cookie</span>
   </footer>
 
 </div>
